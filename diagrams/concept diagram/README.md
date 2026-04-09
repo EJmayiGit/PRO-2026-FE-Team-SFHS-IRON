@@ -1,7 +1,7 @@
 # CONCEPT DIAGRAM
 This diagram shows the initial system architecture of our robot, including sensor connections, motor configuration, and SPIKE Prime hub integration.
 
-![image alt](https://github.com/EJmayiGit/PRO-2026-FE-Team-SFHS-IRON/blob/main/diagrams/Simple%20Concept-schematic.png?raw=true)
+![image alt](https://github.com/EJmayiGit/PRO-2026-FE-Team-SFHS-IRON/blob/main/diagrams/concept%20diagram/Simple%20Concept-schematic.png?raw=true)
 
 > The components shown in the CircuitCanvas diagram are used for conceptual representation. 
 While some elements in the diagram may not exactly reflect the physical implementation, they are intended to represent the functional relationships within the system.
