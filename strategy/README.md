@@ -1,5 +1,5 @@
 # OUR STRATEGIES
-====
+
 This folder presents the complete navigation strategy of our robot for both the Open Challenge and Obstacle Challenge in the 25th PRO Future Engineers competition.
 The strategies shown here are designed to ensure consistent and stable performance despite random changes in the track layout.
 
