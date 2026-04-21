@@ -1,0 +1,44 @@
+from spike import PrimeHub, Motor
+from spike.control import wait_for_seconds
+
+hub = PrimeHub()
+steering_motor = Motor('A')
+drive_motor = Motor('B')
+
+hub.motion_sensor.reset_yaw_angle()
+steering_motor.set_degrees_counted(0)
+
+def align_steering():
+    while True:
+        yaw = hub.motion_sensor.get_yaw_angle()
+
+        if yaw > 1:
+            steering_motor.run_for_degrees(abs(yaw), 35)
+        elif yaw < -1:
+            steering_motor.run_for_degrees(abs(yaw), -35)
+        else:
+            break
+
+while hub.motion_sensor.get_yaw_angle() != 0:
+    wait_for_seconds(0.05)
+
+drive_motor.start(-35)
+
+for _ in range(12):
+    align_steering()
+    wait_for_seconds(2)
+
+    steering_motor.run_for_degrees(25, 35)
+    wait_for_seconds(1)
+
+    steering_motor.run_for_degrees(25, -35)
+    wait_for_seconds(1)
+
+drive_motor.stop()
+
+# This program focuses on maintaining a straight path using gyro-based steering correction. 
+# The gyro sensor is reset to establish a reference heading, and the robot continuously monitors its yaw angle during movement.
+# The align_steering() function adjusts the steering motor whenever the robot deviates from its intended direction.
+# If a drift is detected, the steering is corrected proportionally until the heading returns close to zero.
+# While the drive motor runs at a constant speed, this correction loop ensures that the robot remains aligned.
+# This serves as a foundational routine for path stabilization in the Open Challenge.
